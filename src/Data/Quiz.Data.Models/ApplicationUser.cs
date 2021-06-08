@@ -1,4 +1,5 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
 namespace Quiz.Data.Models
 {
     using System;
