@@ -1,8 +1,8 @@
 ﻿namespace Quiz.Data.Configurations
 {
-    using Quiz.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Quiz.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

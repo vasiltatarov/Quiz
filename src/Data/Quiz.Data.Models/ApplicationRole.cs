@@ -3,9 +3,8 @@ namespace Quiz.Data.Models
 {
     using System;
 
-    using Quiz.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using Quiz.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

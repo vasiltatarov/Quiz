@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using Quiz.Data;
-    using Quiz.Data.Common;
-    using Quiz.Data.Common.Repositories;
-    using Quiz.Data.Models;
-    using Quiz.Data.Repositories;
-    using Quiz.Data.Seeding;
-    using Quiz.Services.Data;
-    using Quiz.Services.Mapping;
-    using Quiz.Services.Messaging;
-    using Quiz.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -21,6 +10,15 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Quiz.Data;
+    using Quiz.Data.Common;
+    using Quiz.Data.Common.Repositories;
+    using Quiz.Data.Models;
+    using Quiz.Data.Repositories;
+    using Quiz.Data.Seeding;
+    using Quiz.Services.Mapping;
+    using Quiz.Services.Messaging;
+    using Quiz.Web.ViewModels;
 
     public class Startup
     {
@@ -64,7 +62,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

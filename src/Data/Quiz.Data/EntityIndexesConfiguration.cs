@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using Quiz.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using Quiz.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

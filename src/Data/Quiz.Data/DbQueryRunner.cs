@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using Quiz.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using Quiz.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {
