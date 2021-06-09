@@ -29,6 +29,12 @@
 
         public async Task<int> Add(string title)
         {
+            if (await this.tests.All()
+                .AnyAsync(x => x.Title == title))
+            {
+                return -1;
+            }
+
             var test = new Test { Title = title };
             await this.tests.AddAsync(test);
             await this.tests.SaveChangesAsync();

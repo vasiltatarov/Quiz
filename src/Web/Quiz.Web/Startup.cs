@@ -1,4 +1,6 @@
-﻿namespace Quiz.Web
+﻿using Quiz.Services.Data;
+
+namespace Quiz.Web
 {
     using System.Reflection;
 
@@ -62,6 +64,11 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<ITestService, TestService>();
+            services.AddTransient<IAnswerService, AnswerService>();
+            services.AddTransient<IJsonImportService, JsonImportService>();
+            services.AddTransient<IUserAnswerService, UserAnswerService>();
+            services.AddTransient<IQuestionService, QuestionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
