@@ -8,9 +8,9 @@
 
         public virtual ApplicationUser User { get; set; }
 
-        public int TestId { get; set; }
+        public int QuestionId { get; set; }
 
-        public virtual Test Test { get; set; }
+        public virtual Question Question { get; set; }
 
         public int? AnswerId { get; set; }
 

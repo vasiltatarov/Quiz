@@ -4,7 +4,7 @@
 
     public interface IUserAnswerService
     {
-        Task Add(string userId, int testId, int answerId);
+        Task Add(string userId, int questionId, int answerId);
 
         Task<int> GetUserResult(string userId, int testId);
     }

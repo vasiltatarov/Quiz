@@ -16,10 +16,10 @@
             this.userAnswers = userAnswers;
         }
 
-        public async Task Add(string userId, int testId, int answerId)
+        public async Task Add(string userId, int questionId, int answerId)
         {
             var userAnswer = await this.userAnswers.All()
-                .FirstOrDefaultAsync(x => x.UserId == userId && x.TestId == testId);
+                .FirstOrDefaultAsync(x => x.UserId == userId && x.QuestionId == questionId);
 
             if (userAnswer == null)
             {
@@ -32,7 +32,7 @@
 
         public Task<int> GetUserResult(string userId, int testId)
             => this.userAnswers.AllAsNoTracking()
-                .Where(x => x.UserId == userId && x.TestId == testId)
+                .Where(x => x.UserId == userId && x.Question.TestId == testId)
                 .SumAsync(x => x.Answer.Points);
     }
 }
