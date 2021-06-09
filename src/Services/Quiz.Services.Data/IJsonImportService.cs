@@ -4,6 +4,6 @@
 
     public interface IJsonImportService
     {
-        Task Import(string fileName, string quizName);
+        Task Import(string fileName, string quizName, string userId);
     }
 }

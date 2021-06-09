@@ -7,7 +7,7 @@
 
     public interface ITestService
     {
-        Task<int> Add(string title);
+        Task<int> Add(string title, string creatorId);
 
         QuizViewModel GetQuizById(int testId);
 

@@ -27,7 +27,7 @@
             this.questions = questions;
         }
 
-        public async Task<int> Add(string title)
+        public async Task<int> Add(string title, string creatorId)
         {
             if (await this.tests.All()
                 .AnyAsync(x => x.Title == title))
@@ -35,7 +35,11 @@
                 return -1;
             }
 
-            var test = new Test { Title = title };
+            var test = new Test
+            {
+                Title = title,
+                CreatorId = creatorId,
+            };
             await this.tests.AddAsync(test);
             await this.tests.SaveChangesAsync();
 

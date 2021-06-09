@@ -24,12 +24,12 @@
             this.answerService = answerService;
         }
 
-        public async Task Import(string fileName, string quizName)
+        public async Task Import(string fileName, string quizName, string userId)
         {
             var json = File.ReadAllText(fileName);
             var questions = JsonConvert.DeserializeObject<IEnumerable<JsonQuestion>>(json);
 
-            var testId = await this.testService.Add(quizName);
+            var testId = await this.testService.Add(quizName, userId);
 
             if (testId == -1)
             {

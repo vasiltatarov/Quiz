@@ -1,6 +1,7 @@
 ﻿namespace Quiz.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using Quiz.Data.Common.Models;
 
@@ -12,8 +13,10 @@
             this.UserAnswers = new HashSet<UserAnswer>();
         }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public int TestId { get; set; }
 
         public virtual Test Test { get; set; }
