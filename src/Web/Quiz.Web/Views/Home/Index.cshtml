@@ -1,9 +1,38 @@
 ﻿@using Quiz.Common
-@{
-    this.ViewData["Title"] = "Home Page";
-}
+@using Quiz.Services.Data.Models
+@model IEnumerable<Quiz.Services.Data.Models.UserTestViewModel>
+@{ this.ViewData["Title"] = "Home Page"; }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<hr />
+
+<table class="table table-sm table-striped table-hover table-bordered">
+    <tr>
+        <th>Quiz Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var test in this.Model)
+    {
+        <tr>
+            <td>@test.Title</td>
+            <td>
+                @if (test.Status == TestStatus.NotStarted)
+                {
+                    <a class="btn btn-primary">Start Test</a>
+                }
+                else if (test.Status == TestStatus.InProgress)
+                {
+                    <a href="" class="btn btn-warning">Continue test</a>
+                }
+                else
+                {
+                    <a href="" class="btn btn-secondary">View results</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

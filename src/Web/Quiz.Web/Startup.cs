@@ -1,6 +1,4 @@
-﻿using Quiz.Services.Data;
-
-namespace Quiz.Web
+﻿namespace Quiz.Web
 {
     using System.Reflection;
 
@@ -18,6 +16,7 @@ namespace Quiz.Web
     using Quiz.Data.Models;
     using Quiz.Data.Repositories;
     using Quiz.Data.Seeding;
+    using Quiz.Services.Data;
     using Quiz.Services.Mapping;
     using Quiz.Services.Messaging;
     using Quiz.Web.ViewModels;

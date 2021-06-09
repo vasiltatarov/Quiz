@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Quiz.Data.Migrations
+﻿namespace Quiz.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddCreatorToTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
