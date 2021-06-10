@@ -83,7 +83,7 @@
                 await this.jsonImportService.Import(filePath, fileName, user.Id);
             }
 
-            return this.Ok();
+            return this.RedirectToAction("Index", "Home");
         }
 
         private List<string> GetTestNames(string[] files)
