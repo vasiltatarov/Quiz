@@ -9,7 +9,7 @@
     {
         Task<int> Add(string title, string creatorId);
 
-        QuizViewModel GetQuizById(int testId);
+        QuizViewModel GetTestById(int testId);
 
         Task<T> GetTestById<T>(int id);
 

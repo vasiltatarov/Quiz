@@ -46,7 +46,7 @@
             return test.Id;
         }
 
-        public QuizViewModel GetQuizById(int testId)
+        public QuizViewModel GetTestById(int testId)
         {
             var test = this.tests.All()
                 .Include(x => x.Questions)

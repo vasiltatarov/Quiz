@@ -1,0 +1,32 @@
+﻿@model Quiz.Services.Data.Models.QuizViewModel
+@{
+    this.ViewData["Title"] = "Start Quiz";
+    var questionCount = 1;
+}
+
+<link href="~/css/question.css" rel="stylesheet" />
+
+<h1>@Model.Title</h1>
+<hr />
+
+<form asp-controller="Tests" asp-action="Submit" asp-route-testId="@this.Model.Id" method="post">
+    @foreach (var question in this.Model.Questions)
+    {
+        <p class="fw-bold">@(questionCount++). @question.Title</p>
+
+        foreach (var answer in question.Answers)
+        {
+            <div>
+                <input type="radio" name="q_@question.Id" value="@answer.Id" id="a_@answer.Id" />
+                <label for="@answer.Id" class="box first">
+                    <div class="course">
+                        <span class="circle"></span>
+                        <span class="subject">@answer.Title</span>
+                    </div>
+                </label>
+            </div>
+        }
+        <hr />
+    }
+    <input type="submit" value="Finish" class="btn btn-primary" />
+</form>

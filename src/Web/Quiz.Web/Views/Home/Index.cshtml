@@ -22,15 +22,15 @@
             <td>
                 @if (test.Status == TestStatus.NotStarted)
                 {
-                    <a class="btn btn-primary">Start Test</a>
+                    <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Test</a>
                 }
                 else if (test.Status == TestStatus.InProgress)
                 {
-                    <a href="" class="btn btn-warning">Continue test</a>
+                    <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-warning">Continue test</a>
                 }
                 else
                 {
-                    <a href="" class="btn btn-secondary">View results</a>
+                    <a asp-controller="Tests" asp-action="Result" asp-route-testId="@test.TestId" class="btn btn-secondary">View results</a>
                 }
             </td>
         </tr>
