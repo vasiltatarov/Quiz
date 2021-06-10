@@ -67,7 +67,10 @@ label.box .circle {
 }
 
 input[type="radio"] {
-    display: none
+    float: left;
+    margin-bottom: -50px;
+    margin-left: 18px;
+    margin-top: 15px;
 }
 
 .btn.btn-primary {

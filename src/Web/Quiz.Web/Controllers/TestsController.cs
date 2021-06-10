@@ -50,9 +50,12 @@
 
             foreach (var item in this.Request.Form)
             {
-                var questionId = int.Parse(item.Key.Replace("q_", string.Empty));
-                var answerId = int.Parse(item.Value);
-                await this.userAnswerService.Add(user.Id, questionId, answerId);
+                if (item.Key != "__RequestVerificationToken")
+                {
+                    var questionId = int.Parse(item.Key.Replace("q_", string.Empty));
+                    var answerId = int.Parse(item.Value);
+                    await this.userAnswerService.Add(user.Id, questionId, answerId);
+                }
             }
 
             return this.RedirectToAction("Result", new { testId });

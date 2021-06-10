@@ -16,14 +16,16 @@
 
         foreach (var answer in question.Answers)
         {
-            <div>
-                <input type="radio" name="q_@question.Id" value="@answer.Id" id="a_@answer.Id" />
-                <label for="@answer.Id" class="box first">
+            <div class="col-12">
+                <div>
                     <div class="course">
-                        <span class="circle"></span>
-                        <span class="subject">@answer.Title</span>
+                        <input type="radio" name="q_@question.Id" value="@answer.Id" id="a_@answer.Id" />
+                        <label for="a_@answer.Id" class="box first">
+                            <span class="circle"></span>
+                            <span class="subject">@answer.Title</span>
+                        </label>
                     </div>
-                </label>
+                </div>
             </div>
         }
         <hr />

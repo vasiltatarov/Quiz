@@ -38,7 +38,7 @@
 
             foreach (var question in questions)
             {
-                var questionId = await this.questionService.Add(question.Question, 1);
+                var questionId = await this.questionService.Add(question.Question, testId);
 
                 foreach (var answer in question.Answers)
                 {
