@@ -1,16 +1,31 @@
 ﻿namespace Quiz.Web.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Quiz.Data.Models;
+    using Quiz.Services.Data;
+
+    [Authorize]
     public class StatisticsController : Controller
     {
-        public StatisticsController()
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IUserTestService userTestService;
+
+        public StatisticsController(UserManager<ApplicationUser> userManager, IUserTestService userTestService)
         {
+            this.userManager = userManager;
+            this.userTestService = userTestService;
         }
 
-        public IActionResult UserStatistics()
+        public async Task<IActionResult> UserStatistics()
         {
-            return this.View();
+            var user = await this.userManager.GetUserAsync(this.User);
+            var viewModel = this.userTestService.GetAllByUserId(user.Id);
+
+            return this.View(viewModel);
         }
     }
 }

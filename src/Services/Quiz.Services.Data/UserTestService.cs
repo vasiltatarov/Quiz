@@ -1,19 +1,24 @@
 ﻿namespace Quiz.Services.Data
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
     using Quiz.Data.Common.Repositories;
     using Quiz.Data.Models;
+    using Quiz.Services.Data.Models;
 
     public class UserTestService : IUserTestService
     {
         private readonly IRepository<UserTest> userTestRepository;
+        private readonly IUserAnswerService userAnswerService;
 
-        public UserTestService(IRepository<UserTest> userTestRepository)
+        public UserTestService(IRepository<UserTest> userTestRepository, IUserAnswerService userAnswerService)
         {
             this.userTestRepository = userTestRepository;
+            this.userAnswerService = userAnswerService;
         }
 
         public async Task Add(string userId, int testId)
@@ -38,5 +43,17 @@
 
             await this.userTestRepository.SaveChangesAsync();
         }
+
+        public IEnumerable<StatsUserTestViewModel> GetAllByUserId(string userId)
+            => this.userTestRepository
+                .AllAsNoTracking()
+                .Where(x => x.UserId == userId)
+                .Select(x => new StatsUserTestViewModel
+                {
+                    Title = x.Test.Title,
+                    CreatedOn = x.CreatedOn,
+                    Result = this.userAnswerService.GetUserResult(userId, x.TestId).Result,
+                })
+                .ToList();
     }
 }

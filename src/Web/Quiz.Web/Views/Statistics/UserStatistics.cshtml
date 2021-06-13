@@ -1,1 +1,37 @@
-﻿My Stats
+﻿@model IEnumerable<Quiz.Services.Data.Models.StatsUserTestViewModel>
+
+@{ this.ViewData["Title"] = "My Statistics"; }
+
+@for (int i = 1; i < 9; i++)
+{
+    <br />
+}
+
+<table id="myTable" class="table table-sm table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Date On</th>
+            <th>Quiz Name</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var test in this.Model)
+        {
+            <tr>
+                <td>@test.CreatedOn</td>
+                <td>@test.Title</td>
+                <td>@test.Result / 10 points</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
