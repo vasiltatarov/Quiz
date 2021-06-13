@@ -1,60 +1,80 @@
 ﻿@using Quiz.Common
 @using Quiz.Services.Data.Models
 @model IEnumerable<Quiz.Services.Data.Models.UserTestViewModel>
-@{ this.ViewData["Title"] = "Home Page"; }
+@{
+    this.ViewData["Title"] = "Home Page";
+    var rand = new Random();
+}
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>All Quizzes</h2>
 </div>
+<br />
 
-<hr />
-
-<table class="table table-sm table-striped table-hover table-bordered">
-    <tr>
-        <th>Quiz Name</th>
-        <th>Status</th>
-        <th>Result</th>
-        <th>Again</th>
-    </tr>
-    @foreach (var test in this.Model)
-    {
+<table id="myTable" class="table table-sm table-striped table-hover table-bordered">
+    <thead>
         <tr>
-            <td>@test.Title</td>
-            <td>
-                @if (test.Status == TestStatus.NotStarted)
-                {
-                    <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Test</a>
-                }
-                else if (test.Status == TestStatus.InProgress)
-                {
-                    <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-warning">Continue test</a>
-                }
-                else
-                {
-                    <a class="btn btn-success disabled">Finished</a>
-                }
-            </td>
-            <td>
-                @if (test.Status == TestStatus.Finished)
-                {
-                    <a asp-controller="Tests" asp-action="Result" asp-route-testId="@test.TestId" class="btn btn-secondary">View results</a>
-                }
-                else
-                {
-                    <p>Not Finish</p>
-                }
-            </td>
-            <td>
-                @if (test.Status == TestStatus.Finished)
-                {
-                    <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Again</a>
-                }
-                else
-                {
-                    <p>Not Finish</p>
-                }
-            </td>
+            <th>Quiz Name</th>
+            <th>Status</th>
+            <th>Result</th>
+            <th>Again</th>
+            <th>Participants</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var test in this.Model)
+        {
+            <tr>
+                <td>@test.Title</td>
+                <td>
+                    @if (test.Status == TestStatus.NotStarted)
+                    {
+                        <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Test</a>
+                    }
+                    else if (test.Status == TestStatus.InProgress)
+                    {
+                        <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-warning">Continue test</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success disabled">Finished</a>
+                    }
+                </td>
+                <td>
+                    @if (test.Status == TestStatus.Finished)
+                    {
+                        <a asp-controller="Tests" asp-action="Result" asp-route-testId="@test.TestId" class="btn btn-secondary">View results</a>
+                    }
+                    else
+                    {
+                        <p>Not Finish</p>
+                    }
+                </td>
+                <td>
+                    @if (test.Status == TestStatus.Finished)
+                    {
+                        <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Again</a>
+                    }
+                    else
+                    {
+                        <p>Not Finish</p>
+                    }
+                </td>
+                <td>
+                    @rand.Next(1, 111)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
