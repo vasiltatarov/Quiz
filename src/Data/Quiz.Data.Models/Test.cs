@@ -10,6 +10,7 @@
         public Test()
         {
             this.Questions = new HashSet<Question>();
+            this.UserTests = new HashSet<UserTest>();
         }
 
         [Required]
@@ -21,5 +22,7 @@
         public virtual ApplicationUser Creator { get; set; }
 
         public virtual ICollection<Question> Questions { get; set; }
+
+        public virtual ICollection<UserTest> UserTests { get; set; }
     }
 }

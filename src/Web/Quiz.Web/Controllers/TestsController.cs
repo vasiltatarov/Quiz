@@ -21,17 +21,20 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ITestService testService;
         private readonly IUserAnswerService userAnswerService;
+        private readonly IUserTestService userTestService;
 
         public TestsController(
             IJsonImportService jsonImportService,
             UserManager<ApplicationUser> userManager,
             ITestService testService,
-            IUserAnswerService userAnswerService)
+            IUserAnswerService userAnswerService,
+            IUserTestService userTestService)
         {
             this.jsonImportService = jsonImportService;
             this.userManager = userManager;
             this.testService = testService;
             this.userAnswerService = userAnswerService;
+            this.userTestService = userTestService;
         }
 
         public async Task<IActionResult> Start(int testId)
@@ -47,6 +50,7 @@
         public async Task<IActionResult> Submit(int testId)
         {
             var user = await this.userManager.GetUserAsync(this.User);
+            await this.userTestService.Add(user.Id, testId);
 
             foreach (var item in this.Request.Form)
             {

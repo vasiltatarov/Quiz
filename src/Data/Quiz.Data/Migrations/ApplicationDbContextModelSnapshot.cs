@@ -397,6 +397,24 @@ namespace Quiz.Data.Migrations
                     b.ToTable("UserAnswers");
                 });
 
+            modelBuilder.Entity("Quiz.Data.Models.UserTest", b =>
+                {
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TestId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTests");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Quiz.Data.Models.ApplicationRole", null)
@@ -506,6 +524,25 @@ namespace Quiz.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Quiz.Data.Models.UserTest", b =>
+                {
+                    b.HasOne("Quiz.Data.Models.Test", "Test")
+                        .WithMany("UserTests")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Quiz.Data.Models.ApplicationUser", "User")
+                        .WithMany("UserTests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Quiz.Data.Models.Answer", b =>
                 {
                     b.Navigation("UserAnswers");
@@ -518,6 +555,8 @@ namespace Quiz.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+
+                    b.Navigation("UserTests");
                 });
 
             modelBuilder.Entity("Quiz.Data.Models.Question", b =>
@@ -530,6 +569,8 @@ namespace Quiz.Data.Migrations
             modelBuilder.Entity("Quiz.Data.Models.Test", b =>
                 {
                     b.Navigation("Questions");
+
+                    b.Navigation("UserTests");
                 });
 #pragma warning restore 612, 618
         }

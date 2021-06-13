@@ -68,6 +68,7 @@
             services.AddTransient<IJsonImportService, JsonImportService>();
             services.AddTransient<IUserAnswerService, UserAnswerService>();
             services.AddTransient<IQuestionService, QuestionService>();
+            services.AddTransient<IUserTestService, UserTestService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
