@@ -9,8 +9,15 @@
     </ol>
 </nav>
 
-<div class="text-center">
-    <h1>@Model.Sum(x => x.Result) Points</h1>
+<div class="jumbotron">
+    <h1 class="display-4">Hello, @this.User.Identity.Name</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>What are you waiting for? To get more scores go and solve more tests now.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Home" asp-action="Index" role="button">Solve More Tests</a>
+    </p>
+    <h1 class="text-center">Your Score is: @Model.Sum(x => x.Result)</h1>
 </div>
 
 <table id="myTable" class="table table-sm table-striped table-hover table-bordered">
