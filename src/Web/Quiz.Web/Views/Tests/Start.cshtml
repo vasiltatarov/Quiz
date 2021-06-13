@@ -1,18 +1,23 @@
 ﻿@model Quiz.Services.Data.Models.QuizViewModel
 @{
-    this.ViewData["Title"] = "Start Quiz";
+    this.ViewData["Title"] = @Model.Title;
     var questionCount = 1;
 }
 
 <link href="~/css/question.css" rel="stylesheet" />
 
-<h1>@Model.Title</h1>
-<hr />
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">@Model.Title</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mb-0">Answer all the questions to finish the quiz and see your result!</p>
+</div>
+<br />
 
 <form asp-controller="Tests" asp-action="Submit" asp-route-testId="@this.Model.Id" method="post">
     @foreach (var question in this.Model.Questions)
     {
-        <p class="fw-bold">@(questionCount++). @question.Title</p>
+        <h4 class="fw-bold">@(questionCount++). @question.Title</h4>
 
         foreach (var answer in question.Answers)
         {
@@ -30,5 +35,29 @@
         }
         <hr />
     }
-    <input type="submit" value="Finish" class="btn btn-primary" />
+    @*<input type="submit" value="Finish" class="btn btn-primary" />*@
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Finish
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Finish Quiz</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure, you are ready with this quiz!
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>
