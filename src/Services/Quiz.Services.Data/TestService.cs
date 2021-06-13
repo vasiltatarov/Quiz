@@ -16,15 +16,18 @@
         private readonly IDeletableEntityRepository<Test> tests;
         private readonly IDeletableEntityRepository<UserAnswer> userAnswers;
         private readonly IDeletableEntityRepository<Question> questions;
+        private readonly IRepository<UserTest> userTestsRepository;
 
         public TestService(
             IDeletableEntityRepository<Test> tests,
             IDeletableEntityRepository<UserAnswer> userAnswers,
-            IDeletableEntityRepository<Question> questions)
+            IDeletableEntityRepository<Question> questions,
+            IRepository<UserTest> userTestsRepository)
         {
             this.tests = tests;
             this.userAnswers = userAnswers;
             this.questions = questions;
+            this.userTestsRepository = userTestsRepository;
         }
 
         public async Task<int> Add(string title, string creatorId)
@@ -91,6 +94,7 @@
                 {
                     TestId = x.Id,
                     Title = x.Title,
+                    Participants = x.UserTests.Count(ut => ut.TestId == x.Id),
                 })
                 .ToList();
 

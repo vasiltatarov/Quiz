@@ -6,6 +6,8 @@
 
         public string Title { get; set; }
 
+        public int Participants { get; set; }
+
         public TestStatus Status { get; set; }
     }
 }
