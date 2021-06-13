@@ -9,5 +9,7 @@
         public DateTime CreatedOn { get; set; }
 
         public int Result { get; set; }
+
+        public int Questions { get; set; }
     }
 }

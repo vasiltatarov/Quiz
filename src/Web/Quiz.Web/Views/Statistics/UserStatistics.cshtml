@@ -12,7 +12,8 @@
         <tr>
             <th>Date On</th>
             <th>Quiz Name</th>
-            <th>Result</th>
+            <th>Answers/Questions</th>
+            <th>Score</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +22,8 @@
             <tr>
                 <td>@test.CreatedOn</td>
                 <td>@test.Title</td>
-                <td>@test.Result / 10 points</td>
+                <td>@test.Result / @test.Questions</td>
+                <td>@test.Result points</td>
             </tr>
         }
     </tbody>

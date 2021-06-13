@@ -14,11 +14,13 @@
     {
         private readonly IRepository<UserTest> userTestRepository;
         private readonly IUserAnswerService userAnswerService;
+        private readonly IQuestionService questionService;
 
-        public UserTestService(IRepository<UserTest> userTestRepository, IUserAnswerService userAnswerService)
+        public UserTestService(IRepository<UserTest> userTestRepository, IUserAnswerService userAnswerService, IQuestionService questionService)
         {
             this.userTestRepository = userTestRepository;
             this.userAnswerService = userAnswerService;
+            this.questionService = questionService;
         }
 
         public async Task Add(string userId, int testId)
@@ -53,6 +55,7 @@
                     Title = x.Test.Title,
                     CreatedOn = x.CreatedOn,
                     Result = this.userAnswerService.GetUserResult(userId, x.TestId).Result,
+                    Questions = this.questionService.GetQuestionCountByTestId(x.TestId).Result,
                 })
                 .ToList();
     }

@@ -5,5 +5,7 @@
     public interface IQuestionService
     {
         Task<int> Add(string title, int testId);
+
+        Task<int> GetQuestionCountByTestId(int testId);
     }
 }

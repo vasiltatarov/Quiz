@@ -1,4 +1,6 @@
-﻿namespace Quiz.Services.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Quiz.Services.Data
 {
     using System.Threading.Tasks;
 
@@ -26,5 +28,9 @@
 
             return question.Id;
         }
+
+        public Task<int> GetQuestionCountByTestId(int testId)
+            => this.questions.AllAsNoTracking()
+                .CountAsync(x => x.TestId == testId);
     }
 }
