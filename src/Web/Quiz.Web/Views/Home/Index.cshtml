@@ -11,6 +11,12 @@
     }
 </style>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+</nav>
+
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
 </div>
@@ -43,10 +49,9 @@
     </a>
 </div>
 
-<br />
 <hr />
 <div class="text-center">
-    <h2>All Quizzes</h2>
+    <h2>All Quizzes - @Model.Count()</h2>
 </div>
 
 <table id="myTable" class="table table-sm table-striped table-hover table-bordered">
