@@ -29,9 +29,6 @@
         }
 
         public IActionResult TestStatistics(int testId)
-        {
-            var viewModel = this.userTestService.GetAllByTestId(testId);
-            return this.View(viewModel);
-        }
+            => this.View(this.userTestService.GetAllByTestId(testId));
     }
 }

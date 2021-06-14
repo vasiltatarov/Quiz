@@ -69,11 +69,12 @@
                     Title = x.Test.Title,
                     Questions = this.questionService.GetQuestionCountByTestId(x.TestId).Result,
                     Participants = x.Test.UserTests.Count(ut => ut.TestId == testId),
-                    Users = x.Test.UserTests
+                    Users = x.Test
+                        .UserTests
                         .Select(ut => new TestStatsUserViewModel
                         {
                             User = ut.User.Email,
-                            DateOn = x.CreatedOn,
+                            DateOn = ut.CreatedOn,
                             Score = this.userAnswerService.GetUserResult(ut.UserId, x.TestId).Result,
                         })
                         .ToList(),
