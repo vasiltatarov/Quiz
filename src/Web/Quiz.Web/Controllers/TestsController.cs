@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -91,16 +92,8 @@
         }
 
         private List<string> GetTestNames(string[] files)
-        {
-            var tests = new List<string>();
-
-            foreach (var file in files)
-            {
-                var fileName = file.Replace(TestsDirectory, string.Empty);
-                tests.Add(fileName);
-            }
-
-            return tests;
-        }
+            => files
+                .Select(x => x.Replace(TestsDirectory, string.Empty))
+                .ToList();
     }
 }

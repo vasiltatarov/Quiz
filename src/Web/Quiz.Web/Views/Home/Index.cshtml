@@ -69,7 +69,9 @@
         @foreach (var test in this.Model)
         {
             <tr>
-                <td>@test.Title</td>
+                <td>
+                    <a asp-controller="Statistics" asp-action="TestStatistics" asp-route-testId="@test.TestId">@test.Title</a>
+                </td>
                 <td>
                     @if (test.Status == TestStatus.NotStarted)
                     {

@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Quiz.Data.Common\Quiz.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\Quiz.Data.Models\Quiz.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\Quiz.Web.ViewModels\Quiz.Web.ViewModels.csproj" />
     <ProjectReference Include="..\Quiz.Services.Mapping\Quiz.Services.Mapping.csproj" />
   </ItemGroup>
 

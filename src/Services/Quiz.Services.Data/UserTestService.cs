@@ -9,6 +9,7 @@
     using Quiz.Data.Common.Repositories;
     using Quiz.Data.Models;
     using Quiz.Services.Data.Models;
+    using Quiz.Web.ViewModels.Statistics;
 
     public class UserTestService : IUserTestService
     {
@@ -46,11 +47,11 @@
             await this.userTestRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<StatsUserTestViewModel> GetAllByUserId(string userId)
+        public IEnumerable<UserTestStatsViewModel> GetAllByUserId(string userId)
             => this.userTestRepository
                 .AllAsNoTracking()
                 .Where(x => x.UserId == userId)
-                .Select(x => new StatsUserTestViewModel
+                .Select(x => new UserTestStatsViewModel
                 {
                     Title = x.Test.Title,
                     CreatedOn = x.CreatedOn,
@@ -58,5 +59,25 @@
                     Questions = this.questionService.GetQuestionCountByTestId(x.TestId).Result,
                 })
                 .ToList();
+
+        public TestStatsViewModel GetAllByTestId(int testId)
+            => this.userTestRepository
+                .AllAsNoTracking()
+                .Where(x => x.TestId == testId)
+                .Select(x => new TestStatsViewModel
+                {
+                    Title = x.Test.Title,
+                    Questions = this.questionService.GetQuestionCountByTestId(x.TestId).Result,
+                    Participants = x.Test.UserTests.Count(ut => ut.TestId == testId),
+                    Users = x.Test.UserTests
+                        .Select(ut => new TestStatsUserViewModel
+                        {
+                            User = ut.User.Email,
+                            DateOn = x.CreatedOn,
+                            Score = this.userAnswerService.GetUserResult(ut.UserId, x.TestId).Result,
+                        })
+                        .ToList(),
+                })
+                .FirstOrDefault();
     }
 }

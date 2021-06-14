@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class StatsUserTestViewModel
+    public class UserTestStatsViewModel
     {
         public string Title { get; set; }
 

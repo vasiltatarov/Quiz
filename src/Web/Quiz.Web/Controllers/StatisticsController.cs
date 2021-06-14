@@ -27,5 +27,11 @@
 
             return this.View(viewModel);
         }
+
+        public IActionResult TestStatistics(int testId)
+        {
+            var viewModel = this.userTestService.GetAllByTestId(testId);
+            return this.View(viewModel);
+        }
     }
 }
