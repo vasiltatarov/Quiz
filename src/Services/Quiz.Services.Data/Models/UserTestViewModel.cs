@@ -9,5 +9,9 @@
         public int Participants { get; set; }
 
         public TestStatus Status { get; set; }
+
+        public int Questions { get; set; }
+
+        public int Result { get; set; }
     }
 }

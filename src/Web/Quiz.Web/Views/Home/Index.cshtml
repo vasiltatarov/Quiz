@@ -60,8 +60,9 @@
             <th>Quiz Name</th>
             <th>Status</th>
             <th>Result</th>
-            <th>Again</th>
+            <th>Questions</th>
             <th>Participants</th>
+            <th>Again</th>
         </tr>
     </thead>
     <tbody>
@@ -84,14 +85,11 @@
                     }
                 </td>
                 <td>
-                    @if (test.Status == TestStatus.Finished)
-                    {
-                        <a asp-controller="Tests" asp-action="Result" asp-route-testId="@test.TestId" class="btn btn-secondary">View results</a>
-                    }
-                    else
-                    {
-                        <p>Not Finish</p>
-                    }
+                    <p>@test.Result / @test.Questions</p>
+                </td>
+                <td>@test.Questions</td>
+                <td>
+                    @test.Participants
                 </td>
                 <td>
                     @if (test.Status == TestStatus.Finished)
@@ -102,9 +100,6 @@
                     {
                         <p>Not Finish</p>
                     }
-                </td>
-                <td>
-                    @test.Participants
                 </td>
             </tr>
         }
