@@ -33,7 +33,9 @@
 
             if (testId == -1)
             {
-                throw new InvalidOperationException("This Exam already exist!");
+                return;
+
+                // throw new InvalidOperationException("This Exam already exist!");
             }
 
             foreach (var question in questions)
