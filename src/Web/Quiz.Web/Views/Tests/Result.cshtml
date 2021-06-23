@@ -1,16 +1,13 @@
 ﻿@model Quiz.Web.ViewModels.Tests.TestViewModel
 @{ this.ViewData["Title"] = $"{@Model.Title} Result"; }
 
-<link href="~/css/question.css" rel="stylesheet" asp-append-version="true"/>
-
-<h1>Result Page</h1>
-
+<link href="~/css/question.css" rel="stylesheet" asp-append-version="true" />
 
 <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">@Model.Title</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <h4 class="alert-heading">@Model.Title - Result</h4>
+    <p>Green mean that your answer of the question is true, Red mean that answer is false.</p>
     <hr>
-    <p class="mb-0">Answer all the questions to finish the quiz and see your result!</p>
+    <p class="mb-0">This is all of your answers of the current questions</p>
 </div>
 <br />
 
@@ -30,8 +27,8 @@
                     </label>
                 </div>
             </div>
-            <br/>
-            <hr/>
+            <br />
+            <hr />
         }
     }
 </form>
