@@ -1,6 +1,8 @@
-﻿namespace Quiz.Services.Data.Models
+﻿namespace Quiz.Web.ViewModels.Questions
 {
     using System.Collections.Generic;
+
+    using Quiz.Web.ViewModels.Answers;
 
     public class QuestionViewModel
     {

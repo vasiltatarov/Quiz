@@ -96,7 +96,9 @@
                 <td>
                     @if (test.Status == TestStatus.Finished)
                     {
-                        <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Start Again</a>
+                        <a asp-controller="Tests" asp-action="Result" asp-route-testId="@test.TestId" class="btn btn-success">See test</a>
+                        <span>|</span>
+                        <a asp-controller="Tests" asp-action="Start" asp-route-testId="@test.TestId" class="btn btn-primary">Try again</a>
                     }
                     else
                     {

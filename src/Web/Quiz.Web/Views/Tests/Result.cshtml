@@ -1,6 +1,37 @@
-﻿@model Quiz.Web.ViewModels.Tests.ResultViewModel
-@{ this.ViewData["Title"] = "Quiz Result"; }
+﻿@model Quiz.Web.ViewModels.Tests.TestViewModel
+@{ this.ViewData["Title"] = $"{@Model.Title} Result"; }
+
+<link href="~/css/question.css" rel="stylesheet" asp-append-version="true"/>
 
 <h1>Result Page</h1>
 
-<h2>Your points for this quiz is: @this.Model.Points</h2>
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">@Model.Title</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mb-0">Answer all the questions to finish the quiz and see your result!</p>
+</div>
+<br />
+
+<form asp-controller="Tests" asp-action="Submit" asp-route-testId="@this.Model.Id" method="post">
+    @foreach (var question in this.Model.Questions)
+    {
+        <h4 class="fw-bold">@question.Title</h4>
+
+        foreach (var answer in question.Answers)
+        {
+            <div class="col-12">
+                <div class="course @(answer.IsCorrect ? "bg-success" : "bg-danger")">
+                    <input type="radio" name="q_@question.Id" value="@answer.Id" id="a_@answer.Id" />
+                    <label for="a_@answer.Id" class="box first">
+                        <span class="circle"></span>
+                        <span class="subject">@answer.Title</span>
+                    </label>
+                </div>
+            </div>
+            <br/>
+            <hr/>
+        }
+    }
+</form>

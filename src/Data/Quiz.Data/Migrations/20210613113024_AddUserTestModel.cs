@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Quiz.Data.Migrations
+﻿namespace Quiz.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddUserTestModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

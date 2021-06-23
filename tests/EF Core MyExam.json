@@ -58,8 +58,12 @@
         "Question": "Which of the following class is used as Fluent API in EF Core?",
         "Answers": [
             {
-                "Answer": "DbSet",
+                "Answer": "ModelBuilder",
                 "Correct": true
+            },
+            {
+                "Answer": "DbSet",
+                "Correct": false
             },
             {
                 "Answer": "DbModelBuilder",
@@ -67,10 +71,6 @@
             },
             {
                 "Answer": "DbContext",
-                "Correct": false
-            },
-            {
-                "Answer": "ModelBuilder",
                 "Correct": false
             }
         ]
@@ -109,8 +109,12 @@
         "Question": "Which of these is not valid DeleteBehavior enumaration in EF Core?",
         "Answers": [
             {
-                "Answer": "DeleteBehavior Cascade",
+                "Answer": "DeleteBehavior Transit",
                 "Correct": true
+            },
+            {
+                "Answer": "DeleteBehavior Cascade",
+                "Correct": false
             },
             {
                 "Answer": "DeleteBehavior ClientSetNull",
@@ -118,10 +122,6 @@
             },
             {
                 "Answer": "DeleteBehavior SetNull",
-                "Correct": false
-            },
-            {
-                "Answer": "DeleteBehavior Transit",
                 "Correct": false
             },
             {

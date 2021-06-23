@@ -55,7 +55,7 @@
                 {
                     Title = x.Test.Title,
                     CreatedOn = x.CreatedOn,
-                    Result = this.userAnswerService.GetUserResult(userId, x.TestId).Result,
+                    Result = this.userAnswerService.GetUserPoints(userId, x.TestId).Result,
                     Questions = this.questionService.GetQuestionCountByTestId(x.TestId).Result,
                 })
                 .ToList();
@@ -75,7 +75,7 @@
                         {
                             User = ut.User.Email,
                             DateOn = ut.CreatedOn,
-                            Score = this.userAnswerService.GetUserResult(ut.UserId, x.TestId).Result,
+                            Score = this.userAnswerService.GetUserPoints(ut.UserId, x.TestId).Result,
                         })
                         .ToList(),
                 })

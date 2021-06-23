@@ -4,12 +4,15 @@
     using System.Threading.Tasks;
 
     using Quiz.Services.Data.Models;
+    using Quiz.Web.ViewModels.Tests;
 
     public interface ITestService
     {
         Task<int> Add(string title, string creatorId);
 
-        QuizViewModel GetTestById(int testId);
+        TestViewModel GetTestById(int testId);
+
+        TestViewModel GetTestResult(string userId, int testId);
 
         Task<T> GetTestById<T>(int id);
 

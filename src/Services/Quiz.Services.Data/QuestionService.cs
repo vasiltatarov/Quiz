@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Quiz.Services.Data
+﻿namespace Quiz.Services.Data
 {
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using Quiz.Data.Common.Repositories;
     using Quiz.Data.Models;
 

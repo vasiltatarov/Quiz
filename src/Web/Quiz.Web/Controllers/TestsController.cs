@@ -10,7 +10,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Quiz.Data.Models;
     using Quiz.Services.Data;
-    using Quiz.Web.ViewModels.Tests;
 
     [Authorize]
     public class TestsController : Controller
@@ -69,9 +68,7 @@
         public async Task<IActionResult> Result(int testId)
         {
             var user = await this.userManager.GetUserAsync(this.User);
-            var points = await this.userAnswerService.GetUserResult(user.Id, testId);
-
-            var viewModel = new ResultViewModel { Points = points };
+            var viewModel = this.testService.GetTestResult(user.Id, testId);
 
             return this.View(viewModel);
         }

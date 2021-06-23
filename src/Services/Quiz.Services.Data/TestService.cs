@@ -10,6 +10,9 @@
     using Quiz.Data.Models;
     using Quiz.Services.Data.Models;
     using Quiz.Services.Mapping;
+    using Quiz.Web.ViewModels.Answers;
+    using Quiz.Web.ViewModels.Questions;
+    using Quiz.Web.ViewModels.Tests;
 
     public class TestService : ITestService
     {
@@ -55,14 +58,14 @@
             return test.Id;
         }
 
-        public QuizViewModel GetTestById(int testId)
+        public TestViewModel GetTestById(int testId)
         {
             var test = this.tests.All()
                 .Include(x => x.Questions)
                 .ThenInclude(x => x.Answers)
                 .FirstOrDefault(x => x.Id == testId);
 
-            var testViewModel = new QuizViewModel
+            var testViewModel = new TestViewModel
             {
                 Id = testId,
                 Title = test.Title,
@@ -87,6 +90,41 @@
             return testViewModel;
         }
 
+        public TestViewModel GetTestResult(string userId, int testId)
+        {
+            var test = this.userTestsRepository.AllAsNoTracking()
+                .Include(x => x.Test.Questions)
+                .ThenInclude(x => x.UserAnswers)
+                .ThenInclude(x => x.Answer)
+                .FirstOrDefault(x => x.TestId == testId && x.UserId == userId);
+
+            var testViewModel = new TestViewModel
+            {
+                Id = testId,
+                Title = test.Test.Title,
+                Questions = test.Test.Questions
+                    .OrderBy(q => Guid.NewGuid())
+                    .Select(q => new QuestionViewModel
+                    {
+                        Id = q.Id,
+                        Title = q.Title,
+                        Answers = q.UserAnswers
+                            .Where(ua => ua.UserId == userId)
+                            .OrderBy(ua => Guid.NewGuid())
+                            .Select(ua => new AnswerViewModel
+                            {
+                                Id = ua.AnswerId.Value,
+                                Title = ua.Answer.Title,
+                                IsCorrect = ua.Answer.IsCorrect,
+                            })
+                            .ToList(),
+                    })
+                    .ToList(),
+            };
+
+            return testViewModel;
+        }
+
         public async Task<T> GetTestById<T>(int id)
             => await this.tests.All()
                 .Where(x => x.Id == id)
@@ -102,7 +140,7 @@
                     Title = x.Title,
                     Participants = x.UserTests.Count(ut => ut.TestId == x.Id),
                     Questions = this.questionService.GetQuestionCountByTestId(x.Id).Result,
-                    Result = this.userAnswerService.GetUserResult(userId, x.Id).Result,
+                    Result = this.userAnswerService.GetUserPoints(userId, x.Id).Result,
                 })
                 .ToList();
 

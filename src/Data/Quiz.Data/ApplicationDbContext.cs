@@ -1,6 +1,4 @@
-﻿using Quiz.Data.Configurations;
-
-namespace Quiz.Data
+﻿namespace Quiz.Data
 {
     using System;
     using System.Linq;
@@ -11,6 +9,7 @@ namespace Quiz.Data
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Quiz.Data.Common.Models;
+    using Quiz.Data.Configurations;
     using Quiz.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>

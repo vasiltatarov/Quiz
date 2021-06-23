@@ -1,8 +1,10 @@
-﻿namespace Quiz.Services.Data.Models
+﻿namespace Quiz.Web.ViewModels.Tests
 {
     using System.Collections.Generic;
 
-    public class QuizViewModel
+    using Quiz.Web.ViewModels.Questions;
+
+    public class TestViewModel
     {
         public int Id { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿namespace Quiz.Services.Data
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@
             await this.userAnswers.SaveChangesAsync();
         }
 
-        public Task<int> GetUserResult(string userId, int testId)
+        public Task<int> GetUserPoints(string userId, int testId)
             => this.userAnswers.AllAsNoTracking()
                 .Where(x => x.UserId == userId && x.Question.TestId == testId)
                 .SumAsync(x => x.Answer.Points);
