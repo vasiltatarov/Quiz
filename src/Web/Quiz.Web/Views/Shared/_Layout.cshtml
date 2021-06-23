@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/vendor/bootstrap/bootstrap.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/lazy.css" asp-append-version="true">
 
+    <link href="~/lib/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true" />
+
     <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
@@ -52,13 +54,14 @@
         </div>
     </footer>
 
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
 
     <script src="~/lib/datatables/media/js/jquery.dataTables.min.js" asp-append-version="true"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="~/vendor/jquery/jquery.min.js" asp-append-version="true"></script>
+    @*<script src="~/vendor/jquery/jquery.min.js" asp-append-version="true"></script>*@
     <script src="~/vendor/popper/popper.min.js" asp-append-version="true"></script>
     <script src="~/vendor/bootstrap/bootstrap.min.js" asp-append-version="true"></script>
 
