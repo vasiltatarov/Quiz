@@ -13,14 +13,15 @@
         <input asp-for="@Model.Title" class="form-control" />
         <span asp-validation-for="@Model.Title" class="text-danger"></span>
     </div>
-    
-    <hr/>
-    
+
+    <hr />
+
     @for (int q = 0; q < @Model.Questions.Length; q++)
     {
         <div>
             <label>Question @(q + 1)</label>
             <input value="" asp-for="@Model.Questions[q].Question" class="form-control" />
+            <span asp-validation-for="@Model.Questions[q].Question" class="text-danger"></span>
         </div>
 
         @for (int a = 0; a < 4; a++)
@@ -28,12 +29,13 @@
             <div class="col-md-8">
                 <label>Answer @(a + 1)</label>
                 <input value="" asp-for="@Model.Questions[q].Answers[a].Answer" class="form-control-range" />
+                <span asp-validation-for="@Model.Questions[q].Answers[a].Answer" class="text-danger"></span>
                 <label>Is Correct</label>
                 <input asp-for="@Model.Questions[q].Answers[a].Correct" />
             </div>
         }
 
-        <hr/>
+        <hr />
     }
 
     <button type="submit" class="btn btn-block btn-primary">Submit</button>

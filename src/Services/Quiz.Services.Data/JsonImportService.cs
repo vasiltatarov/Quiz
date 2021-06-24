@@ -1,4 +1,6 @@
-﻿namespace Quiz.Services.Data
+﻿using System.Linq;
+
+namespace Quiz.Services.Data
 {
     using System;
     using System.Collections.Generic;

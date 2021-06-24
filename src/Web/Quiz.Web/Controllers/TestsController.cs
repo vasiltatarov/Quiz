@@ -44,6 +44,11 @@
         [HttpPost]
         public IActionResult Add(TestFormModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
             var title = model.Title;
             var json = JsonConvert.SerializeObject(model.Questions, Formatting.Indented);
             var filePath = $"{TestsDirectory}{title}{JsonFileExtension}";

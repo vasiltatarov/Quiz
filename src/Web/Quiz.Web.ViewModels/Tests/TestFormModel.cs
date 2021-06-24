@@ -7,6 +7,6 @@
         [Required]
         public string Title { get; set; }
 
-        public QuestionFormModel[] Questions { get; set; } = new QuestionFormModel[2];
+        public QuestionFormModel[] Questions { get; set; } = new QuestionFormModel[10];
     }
 }
