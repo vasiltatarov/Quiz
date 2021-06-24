@@ -1,45 +1,58 @@
 ﻿@model Quiz.Web.ViewModels.Statistics.TestStatsViewModel
-@{ this.ViewData["Title"] = "My Statistics"; }
+@{ this.ViewData["Question"] = "My Statistics"; }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Test Statistics</li>
-        <li class="breadcrumb-item active" aria-current="page">@this.Model.Title</li>
-    </ol>
-</nav>
+@if (this.Model == null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <i class="fa fa-info"></i>
+        <strong>Hey!</strong> No one solved this test yet.
+    </div>
+}
+else
+{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Test Statistics</li>
+            <li class="breadcrumb-item active" aria-current="page">@this.Model.Title</li>
+        </ol>
+    </nav>
 
-<ul class="list-group w-25">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Questions
-        <span class="badge badge-primary badge-pill">@this.Model.Questions</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Participants
-        <span class="badge badge-primary badge-pill">@this.Model.Participants</span>
-    </li>
-</ul>
-<br />
+    <ul class="list-group w-25">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Questions
+            <span class="badge badge-primary badge-pill">@this.Model.Questions</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Participants
+            <span class="badge badge-primary badge-pill">@this.Model.Participants</span>
+        </li>
+    </ul>
+    <br />
 
-<table id="myTable" class="table table-striped table-hover table-bordered">
-    <thead>
-        <tr>
-            <th>Date On</th>
-            <th>Username</th>
-            <th>Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in this.Model.Users)
-        {
+    <table id="myTable" class="table table-striped table-hover table-bordered">
+        <thead>
             <tr>
-                <td>@user.DateOn</td>
-                <td>@user.User</td>
-                <td>@user.Score Points</td>
+                <th>Date On</th>
+                <th>Username</th>
+                <th>Score</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in this.Model.Users)
+            {
+                <tr>
+                    <td>@user.DateOn</td>
+                    <td>@user.User</td>
+                    <td>@user.Score Points</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @section Scripts
 {

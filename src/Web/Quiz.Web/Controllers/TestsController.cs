@@ -8,8 +8,10 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
     using Quiz.Data.Models;
     using Quiz.Services.Data;
+    using Quiz.Web.ViewModels.Tests;
 
     using static Quiz.Common.GlobalConstants;
 
@@ -34,6 +36,24 @@
             this.testService = testService;
             this.userAnswerService = userAnswerService;
             this.userTestService = userTestService;
+        }
+
+        public IActionResult Add()
+            => this.View(new TestFormModel());
+
+        [HttpPost]
+        public IActionResult Add(TestFormModel model)
+        {
+            var title = model.Title;
+            var json = JsonConvert.SerializeObject(model.Questions, Formatting.Indented);
+            var filePath = $"{TestsDirectory}{title}{JsonFileExtension}";
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                System.IO.File.WriteAllText(filePath, json);
+            }
+
+            return this.RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> Start(int testId)

@@ -1,0 +1,44 @@
+[
+  {
+    "Question": "What is Muscle up?",
+    "Answers": [
+      {
+        "Answer": "exercise",
+        "Correct": true
+      },
+      {
+        "Answer": "Car brand",
+        "Correct": false
+      },
+      {
+        "Answer": "Programming language",
+        "Correct": false
+      },
+      {
+        "Answer": "Other",
+        "Correct": false
+      }
+    ]
+  },
+  {
+    "Question": "At what age can you start Street Fitness?",
+    "Answers": [
+      {
+        "Answer": "11-20",
+        "Correct": false
+      },
+      {
+        "Answer": "21-30",
+        "Correct": false
+      },
+      {
+        "Answer": "More than 30",
+        "Correct": false
+      },
+      {
+        "Answer": "Does not matter",
+        "Correct": true
+      }
+    ]
+  }
+]

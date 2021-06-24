@@ -1,0 +1,40 @@
+﻿@model Quiz.Web.ViewModels.Tests.TestFormModel
+@{
+    this.ViewData["Question"] = "Add Test";
+}
+
+<h1 class="text-center">Create Test</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Title"></label>
+        <input asp-for="@Model.Title" class="form-control" />
+        <span asp-validation-for="@Model.Title" class="text-danger"></span>
+    </div>
+    
+    <hr/>
+    
+    @for (int q = 0; q < @Model.Questions.Length; q++)
+    {
+        <div>
+            <label>Question @(q + 1)</label>
+            <input value="" asp-for="@Model.Questions[q].Question" class="form-control" />
+        </div>
+
+        @for (int a = 0; a < 4; a++)
+        {
+            <div class="col-md-8">
+                <label>Answer @(a + 1)</label>
+                <input value="" asp-for="@Model.Questions[q].Answers[a].Answer" class="form-control-range" />
+                <label>Is Correct</label>
+                <input asp-for="@Model.Questions[q].Answers[a].Correct" />
+            </div>
+        }
+
+        <hr/>
+    }
+
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+</form>
