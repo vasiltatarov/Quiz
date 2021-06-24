@@ -73,7 +73,7 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> AddTestsFromFiles()
         {
             var user = await this.userManager.GetUserAsync(this.User);
             var files = this.GetTestNames(Directory.GetFiles(TestsDirectory));
