@@ -11,12 +11,11 @@
     using Quiz.Data.Models;
     using Quiz.Services.Data;
 
+    using static Quiz.Common.GlobalConstants;
+
     [Authorize]
     public class TestsController : Controller
     {
-        private const string TestsDirectory = "../../../tests/";
-        private const string FileExtension = ".json";
-
         private readonly IJsonImportService jsonImportService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ITestService testService;
@@ -81,7 +80,7 @@
             foreach (var file in files)
             {
                 var filePath = TestsDirectory + file;
-                var fileName = file.Replace(FileExtension, string.Empty);
+                var fileName = file.Replace(JsonFileExtension, string.Empty);
                 await this.jsonImportService.Import(filePath, fileName, user.Id);
             }
 
