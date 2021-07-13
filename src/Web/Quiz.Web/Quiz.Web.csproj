@@ -38,8 +38,6 @@
     <ProjectReference Include="..\..\Services\Quiz.Services.Data\Quiz.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\Quiz.Services.Mapping\Quiz.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\Quiz.Services.Messaging\Quiz.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\Quiz.Services\Quiz.Services.csproj" />
-    <ProjectReference Include="..\Quiz.Web.Infrastructure\Quiz.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Quiz.Web.ViewModels\Quiz.Web.ViewModels.csproj" />
   </ItemGroup>
 </Project>
