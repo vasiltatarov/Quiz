@@ -29,15 +29,6 @@
         }
 
         public IActionResult TestStatistics(int testId)
-        {
-            var testViewModel = this.userTestService.GetAllByTestId(testId);
-
-            //if (testViewModel == null)
-            //{
-            //    return this.ReDi
-            //}
-
-            return this.View(testViewModel);
-        }
+            => this.View(this.userTestService.GetAllByTestId(testId));
     }
 }

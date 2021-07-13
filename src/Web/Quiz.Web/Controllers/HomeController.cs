@@ -10,7 +10,7 @@
     using Quiz.Services.Data;
     using Quiz.Web.ViewModels;
 
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         private readonly ITestService testService;
         private readonly UserManager<ApplicationUser> userManager;
@@ -30,7 +30,8 @@
             return this.View(userTests);
         }
 
-        public IActionResult Privacy() => this.View();
+        public IActionResult Privacy()
+            => this.View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
