@@ -1,6 +1,5 @@
 ﻿namespace Quiz.Services.Data
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -13,9 +12,7 @@
         private readonly IDeletableEntityRepository<UserAnswer> userAnswers;
 
         public UserAnswerService(IDeletableEntityRepository<UserAnswer> userAnswers)
-        {
-            this.userAnswers = userAnswers;
-        }
+            => this.userAnswers = userAnswers;
 
         public async Task Add(string userId, int questionId, int answerId)
         {

@@ -1,8 +1,5 @@
-﻿using System.Linq;
-
-namespace Quiz.Services.Data
+﻿namespace Quiz.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;

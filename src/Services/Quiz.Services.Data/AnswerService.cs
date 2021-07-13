@@ -10,9 +10,7 @@
         private readonly IDeletableEntityRepository<Answer> answers;
 
         public AnswerService(IDeletableEntityRepository<Answer> answers)
-        {
-            this.answers = answers;
-        }
+            => this.answers = answers;
 
         public async Task<int> Add(string title, bool isCorrect, int points, int questionId)
         {

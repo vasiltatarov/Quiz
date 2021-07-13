@@ -1,9 +1,6 @@
 ﻿namespace Quiz.Services.Data
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
-
-    using Quiz.Data.Models;
 
     public interface IUserAnswerService
     {

@@ -11,9 +11,7 @@
         private readonly IDeletableEntityRepository<Question> questions;
 
         public QuestionService(IDeletableEntityRepository<Question> questions)
-        {
-            this.questions = questions;
-        }
+            => this.questions = questions;
 
         public async Task<int> Add(string title, int testId)
         {
